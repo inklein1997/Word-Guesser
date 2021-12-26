@@ -6,11 +6,36 @@ timerEl = document.getElementById('timer');
 
 const words = ["api", "dom", "function", "javascript", "object"];
 
-var randomWord
+var randomWord  //ex. "javascript"
+var randomWordArray //ex. ["j","a","v","a","s","c","r","i","p","t"]
+var blankArray  //ex. ["_","_","_"..."_"]
+var blankString //ex. "_ _ _ _ _ _ _ _ _"
+
+var guessedCorrect
+var guessedIncorrect
 
 startEl.addEventListener("click", start)
 
 function start() {
     console.log("Game has started!");
-    randomWord = pickRandomWord();
+    pickRandomWord();
+    generateRandomWordArray(randomWord);
+    generateBlanks(randomWordArray);
+    console.log(blankString);
+    console.log(blankArray);
+}
+
+function pickRandomWord() {
+    randomWord = words[Math.floor(Math.random()*words.length)];
+    console.log(randomWord);
+}
+
+function generateRandomWordArray(randomWord) {
+    randomWordArray = randomWord.split('');
+    console.log(randomWordArray);
+}
+
+function generateBlanks(randomWordArray) {
+    blankString = randomWordArray.map(letter => (guessedCorrect.indexOf(letter) >= 0 ? letter : "_")).join(' ');
+    blankArray = blankString.split('');
 }
