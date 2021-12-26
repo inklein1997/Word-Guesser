@@ -4,7 +4,7 @@ lossesEl = document.getElementById('losses');
 startEl = document.getElementById('start');
 timerEl = document.getElementById('timer');
 
-const words = ["api", "DOM", "function", "javascript", "object"];
+const words = ["api", "window", "function", "javascript", "object", "document"];
 var losses = [];
 var wins = [];
 
@@ -15,6 +15,11 @@ var blankString //ex. "_ _ _ _ _ _ _ _ _"
 
 var guessedCorrect
 var guessedIncorrect
+
+//TASKS STILL NEED TO BE DONE
+    //1. Remove event listener after timer ends
+    //2. clearInterval and push loss score if start button is pressed mid count.
+    //3. guess is not case sensitive
 
 startEl.addEventListener("click", start)
 
@@ -60,9 +65,10 @@ function startTimer() {
             winsEl.textContent = wins.length
         } else if(timeLeft == 0) {
             clearInterval(timeInterval);
-            timerEl.textContent = "YOU LOST!"
+            timerEl.textContent = "YOU LOST!";
+            removeEventListener("keypress", keypress);
             losses.push(1);
-            lossesEl.textContent = losses.length
+            lossesEl.textContent = losses.length;
         }
     }, 1000)
 }
