@@ -20,9 +20,7 @@ function start() {
     console.log("Game has started!");
     pickRandomWord();
     generateRandomWordArray(randomWord);
-//     generateBlanks(randomWordArray);
-//     console.log(blankString);
-//     console.log(blankArray);
+    generateBlanks(randomWordArray);
     startTimer();
 }
 
@@ -36,19 +34,32 @@ function generateRandomWordArray(randomWord) {
     console.log(randomWordArray);
 }
 
-// function generateBlanks(randomWordArray) {
-//     blankString = randomWordArray.map(letter => (guessedCorrect.indexOf(letter) >= 0 ? letter : "_")).join(' ');
-//     blankArray = blankString.split('');
-// }
+function generateBlanks(randomWordArray) {
+    blankString = "";
+    for (var i = 0; i < randomWordArray.length; i++) {
+        blankString = blankString.concat("_");
+        if(i != randomWordArray.length-1) {
+            blankString = blankString.concat(" ");
+        }
+    }
+    guesserEl.textContent = blankString;
+}
 
 function startTimer() {
     var timeLeft = 10
     var timeInterval = setInterval(function() {
         timeLeft--
         timerEl.textContent = "TIME REMAINING: " + timeLeft;
-        if (timeLeft == 0) {
+        if (timeLeft > 0) {
+            document.addEventListener("keypress", keypress)
+        }else if(timeLeft == 0) {
             clearInterval(timeInterval);
             timerEl.textContent = "YOU RAN OUT OF TIME"
         }
     }, 1000)
+}
+
+function keypress(event) {
+    key = event.key;
+    
 }
