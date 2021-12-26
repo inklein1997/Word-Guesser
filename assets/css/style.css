@@ -40,8 +40,12 @@ button:active {
 }
 
 #scoreboard div {
-    margin-top:10px;
+    margin:10px 0;
     font-size: 2em;
     color:rgb(160, 212, 255);
-    
+    gap:1em;
+}
+
+#losses, #wins {
+    text-align: center;
 }
