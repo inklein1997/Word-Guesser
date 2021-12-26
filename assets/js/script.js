@@ -4,7 +4,9 @@ lossesEl = document.getElementById('losses');
 startEl = document.getElementById('start');
 timerEl = document.getElementById('timer');
 
-const words = ["api", "dom", "function", "javascript", "object"];
+const words = ["api", "DOM", "function", "javascript", "object"];
+var losses = [];
+var wins = [];
 
 var randomWord  //ex. "javascript"
 var randomWordArray //ex. ["j","a","v","a","s","c","r","i","p","t"]
@@ -43,6 +45,7 @@ function generateBlanks(randomWordArray) {
         }
     }
     guesserEl.textContent = blankString;
+    blankArray = blankString.split(" ");
 }
 
 function startTimer() {
@@ -55,11 +58,20 @@ function startTimer() {
         }else if(timeLeft == 0) {
             clearInterval(timeInterval);
             timerEl.textContent = "YOU RAN OUT OF TIME"
+            losses.push(1);
+            lossesEl.textContent = losses.length
         }
     }, 1000)
 }
 
 function keypress(event) {
     key = event.key;
-    
+    var position;
+    if (randomWordArray.includes(key)) {
+        position = randomWordArray.indexOf(key);
+        console.log(key + " is in position " + position);
+        blankArray.splice(position, 1, key);
+        var updatedBlanks = blankArray.join(" ");
+        guesserEl.textContent = updatedBlanks
+    }
 }
