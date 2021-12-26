@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang=en-us>
     <head>
-        <title>Insert Title</title>
+        <title>Word Guesser Game</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href=./assets/css/reset.css>
         <link rel="stylesheet" href=./assets/css/style.css>
     </head>
-    <body>
-        <h1>GUESS THAT PROGRAMING LANGUAGE</h1>
+    <body class=column>
+        <h1>GUESS THAT JAVASCRIPT TERM</h1>
         <h2 id=guesser>GUESSER</h2>
         <button id=start>START</button>
-        <div>
-            <h3 id=wins>Wins: </h3>
-            <h3 id=losses>Losses: </h3>
+        <div id=scoreboard class=row>
+            <div class=column >
+                <h3>Wins: </h3>
+                <h3 id=wins>1</h3>
+            </div>
+            <div class=column>
+                <h3>Losses: </h3>
+                <h3 id=losses>1</h3>
+            </div>
         </div>
         <script src="assets/js/script.js"></script>
     </body>

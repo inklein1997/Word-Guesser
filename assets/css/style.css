@@ -1,0 +1,47 @@
+body {
+    background-color: rgb(46, 46, 46);
+}
+
+.row {
+    display:flex;
+    flex-flow:wrap row;
+    justify-content: space-around;
+}
+
+.column {
+    display:flex;
+    flex-flow: wrap column;
+    align-content: center;
+    gap: 4em;
+    margin-top: 7%
+}
+
+h1, h2 {
+    font-size: 5em;
+    color: rgb(160, 212, 255);
+    text-align: center;
+}
+
+button {
+    background-color: rgba(160, 212, 255, 0.644);
+    padding: 10px;
+    align-self: center;
+    width: 200px;
+    border-radius: 5px;
+}
+
+button:active {
+    background-color: rgba(160, 212, 255);
+}
+
+#scoreboard {
+    border-radius: 5px;
+    border: rgb(160, 212, 255) 5px solid;
+}
+
+#scoreboard div {
+    margin-top:10px;
+    font-size: 2em;
+    color:rgb(160, 212, 255);
+    
+}
