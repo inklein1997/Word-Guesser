@@ -53,11 +53,14 @@ function startTimer() {
     var timeInterval = setInterval(function() {
         timeLeft--
         timerEl.textContent = "TIME REMAINING: " + timeLeft;
-        if (timeLeft > 0) {
-            document.addEventListener("keypress", keypress)
-        }else if(timeLeft == 0) {
+        document.addEventListener("keypress", keypress);
+        if (blankArray.includes("_") == false) {
             clearInterval(timeInterval);
-            timerEl.textContent = "YOU RAN OUT OF TIME"
+            wins.push(1);
+            winsEl.textContent = wins.length
+        } else if(timeLeft == 0) {
+            clearInterval(timeInterval);
+            timerEl.textContent = "YOU LOST!"
             losses.push(1);
             lossesEl.textContent = losses.length
         }
