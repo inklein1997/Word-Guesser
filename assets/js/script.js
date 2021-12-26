@@ -69,8 +69,9 @@ function keypress(event) {
     var position;
     if (randomWordArray.includes(key)) {
         position = randomWordArray.indexOf(key);
-        console.log(key + " is in position " + position);
+        lastPosition = randomWordArray.lastIndexOf(key);
         blankArray.splice(position, 1, key);
+        blankArray.splice(lastPosition, 1, key);
         var updatedBlanks = blankArray.join(" ");
         guesserEl.textContent = updatedBlanks
     }
