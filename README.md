@@ -7,7 +7,7 @@
 - [Acknowledgements](##Acknowledgements)
 
 ## Project Goal
-To create an application...(USE README from assignment)
+To create an application, utilizing Javascript and Web APIs, that allows for the user to guess a word by pressing keys within a time limit.
 
 ## Links
 - ### [URL to Deployed Application]()
