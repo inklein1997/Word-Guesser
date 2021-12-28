@@ -13,13 +13,11 @@ var randomWordArray //ex. ["j","a","v","a","s","c","r","i","p","t"]
 var blankArray  //ex. ["_","_","_"..."_"]
 var blankString //ex. "_ _ _ _ _ _ _ _ _"
 
-var guessedCorrect
-var guessedIncorrect
 
 //TASKS STILL NEED TO BE DONE
-    //1. Remove event listener after timer ends
     //2. clearInterval and push loss score if start button is pressed mid count.
     //3. guess is not case sensitive
+    //4. Keyboard accessible for mobile device.
 
 startEl.addEventListener("click", start)
 
@@ -54,27 +52,29 @@ function generateBlanks(randomWordArray) {
 }
 
 function startTimer() {
-    var timeLeft = 10
+    var timeLeft = 10.0
     var timeInterval = setInterval(function() {
-        timeLeft--
-        timerEl.textContent = "TIME REMAINING: " + timeLeft;
+        timeLeft-=0.1
+        timerEl.textContent = "TIME REMAINING: " + timeLeft.toFixed(1);
         document.addEventListener("keypress", keypress);
         if (blankArray.includes("_") == false) {
             clearInterval(timeInterval);
             wins.push(1);
-            winsEl.textContent = wins.length
-        } else if(timeLeft == 0) {
+            winsEl.textContent = wins.length;
+            document.removeEventListener("keypress",keypress)
+        } else if(timeLeft <= 0) {
             clearInterval(timeInterval);
             timerEl.textContent = "YOU LOST!";
-            removeEventListener("keypress", keypress);
             losses.push(1);
             lossesEl.textContent = losses.length;
+            document.removeEventListener("keypress",keypress)
         }
-    }, 1000)
+    }, 100)
 }
 
 function keypress(event) {
     key = event.key;
+    console.log(key)
     var position;
     if (randomWordArray.includes(key)) {
         position = randomWordArray.indexOf(key);
