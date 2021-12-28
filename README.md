@@ -8,7 +8,7 @@
 - [Acknowledgements](##Acknowledgements)
 
 ## Project Goal
-To create an application, utilizing Javascript and Web APIs, that allows for the user to guess a word by pressing keys within a time limit.  This application is responsive to multiple screen sizes.
+To create an application, utilizing Javascript and Web APIs, that allows for the user to guess a word by pressing keys within a time limit.  This application's display is responsive to multiple screen sizes.  However, this application, is not fully accessible to mobile devices.
 
 ## Links
 - ### [URL to Deployed Application](https://inklein1997.github.io/Word-Guesser/)
