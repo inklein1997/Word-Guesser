@@ -4,7 +4,7 @@ lossesEl = document.getElementById('losses');
 startEl = document.getElementById('start');
 timerEl = document.getElementById('timer');
 
-const words = ["api", "window", "function", "javascript", "object", "document"];
+const words = ["api", "window", "function", "javascript", "object", "document", "dom"];
 var losses = [];
 var wins = [];
 
@@ -13,6 +13,7 @@ var randomWordArray //ex. ["j","a","v","a","s","c","r","i","p","t"]
 var blankArray  //ex. ["_","_","_"..."_"]
 var blankString //ex. "_ _ _ _ _ _ _ _ _"
 
+var click = true
 
 //TASKS STILL NEED TO BE DONE
     //2. clearInterval and push loss score if start button is pressed mid count.
@@ -22,7 +23,7 @@ var blankString //ex. "_ _ _ _ _ _ _ _ _"
 startEl.addEventListener("click", start)
 
 function start() {
-    console.log("Game has started!");
+    console.log(click)
     pickRandomWord();
     generateRandomWordArray(randomWord);
     generateBlanks(randomWordArray);
@@ -31,12 +32,10 @@ function start() {
 
 function pickRandomWord() {
     randomWord = words[Math.floor(Math.random()*words.length)];
-    console.log(randomWord);
 }
 
 function generateRandomWordArray(randomWord) {
     randomWordArray = randomWord.split('');
-    console.log(randomWordArray);
 }
 
 function generateBlanks(randomWordArray) {
@@ -49,10 +48,20 @@ function generateBlanks(randomWordArray) {
     }
     guesserEl.textContent = blankString;
     blankArray = blankString.split(" ");
+    for (var i= 0;i <randomWordArray.length; i++) {
+    if (randomWordArray.includes(" ")) {
+        var spacePosition = randomWordArray.indexOf(" ");
+        randomWordArray.splice(spacePosition, 1, "_")
+        blankArray.splice(spacePosition, 1, " ")
+        }
+    }
+    console.log(blankArray)
 }
 
 function startTimer() {
     var timeLeft = 10.0
+    click = false
+    console.log(click)
     var timeInterval = setInterval(function() {
         timeLeft-=0.1
         timerEl.textContent = "TIME REMAINING: " + timeLeft.toFixed(1);
@@ -68,20 +77,26 @@ function startTimer() {
             losses.push(1);
             lossesEl.textContent = losses.length;
             document.removeEventListener("keypress",keypress)
+        } else if (click == true) {
+            console.log("button was clicked midgame")
+            clearInterval(timeInterval);
+            losses.push(1);
+            lossesEl.textContent = losses.length;
+            document.removeEventListener("keypress",keypress);
+            // start();
         }
     }, 100)
 }
 
 function keypress(event) {
     key = event.key;
-    console.log(key)
-    var position;
-    if (randomWordArray.includes(key)) {
-        position = randomWordArray.indexOf(key);
-        lastPosition = randomWordArray.lastIndexOf(key);
+
+        for (var i = 0; i < randomWordArray.length; i++) {
+            if (randomWordArray.includes(key)) {
+        var position = randomWordArray.indexOf(key);
+        randomWordArray.splice(position, 1, "_");
         blankArray.splice(position, 1, key);
-        blankArray.splice(lastPosition, 1, key);
-        var updatedBlanks = blankArray.join(" ");
-        guesserEl.textContent = updatedBlanks
-    }
+        }    
+        var updatedBlanks = blankArray.join(" "); 
+        } guesserEl.textContent = updatedBlanks
 }
