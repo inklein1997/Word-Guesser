@@ -37,7 +37,7 @@ To create an application, utilizing Javascript and Web APIs, that allows for the
 This project is licensed under the terms of [MIT](https://opensource.org/licenses/MIT).
   
 ## Contribution
-Before contributing to **Weather-Dashboard**, please read this [code of conduct](code_of_conduct.md)[^1].<br>
+Before contributing to **Word Guesser Game**, please read this [code of conduct](code_of_conduct.md)[^1].<br>
 Here's how you can contribute...
 1. Add issue or recommendation for improvement to Issues tab on Github.
 2. Submit pull request for review.
