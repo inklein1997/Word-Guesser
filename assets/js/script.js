@@ -13,7 +13,7 @@ var randomWordArray //ex. ["j","a","v","a","s","c","r","i","p","t"]
 var blankArray  //ex. ["_","_","_"..."_"]
 var blankString //ex. "_ _ _ _ _ _ _ _ _"
 
-var click = true
+var click
 
 //TASKS STILL NEED TO BE DONE
     //2. clearInterval and push loss score if start button is pressed mid count.
@@ -23,6 +23,7 @@ var click = true
 startEl.addEventListener("click", start)
 
 function start() {
+    click = true
     console.log(click)
     pickRandomWord();
     generateRandomWordArray(randomWord);
@@ -77,7 +78,7 @@ function startTimer() {
             losses.push(1);
             lossesEl.textContent = losses.length;
             document.removeEventListener("keypress",keypress)
-        } else if (click == true) {
+        } else if (click == true) {                             //this is supposed to reset game...
             console.log("button was clicked midgame")
             clearInterval(timeInterval);
             losses.push(1);
