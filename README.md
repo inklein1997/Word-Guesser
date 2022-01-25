@@ -10,6 +10,7 @@
 - [License](#License)
 - [Contribution](#Contribution)
 - [Acknowledgements](#Acknowledgements)
+- [Questions](#Questions)
 
 ## Project Goal
 To create an application, utilizing Javascript and Web APIs, that allows for the user to guess a word by pressing keys within a time limit.  This application's display is responsive to multiple screen sizes.  However, this application, is not fully accessible to mobile devices.
@@ -44,3 +45,10 @@ Here's how you can contribute...
 
 ## Acknowledgements
 - reset.css provided by the University of Texas at Austin Coding Bootcamp curriculum.
+
+## Questions
+If you have any questions, please contact me via:
+1. GitHub -- [@inklein1997](https://github.com/inklein1997)
+2. Email -- michaelklein1997@gmail.com
+
+[^1]: Code of Conduct provided by [Contributor Covenant](https://www.contributor-covenant.org/)
